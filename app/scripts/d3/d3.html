@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-9" d3-dir d3-data="ctrl.data" d3-x="ctrl.x" d3-y="ctrl.y"
+    d3-color="ctrl.color" d3-size="ctrl.size" style="height: 600px"></div>
+
+  <div class="col-md-3">
+    <div class="row">
+      <div class="col-md-3">
+        <label for="xAxisProperty">X</label>
+      </div>
+      <div class="col-md-9">
+        <select id="xAxisProperty" ng-model="ctrl.x" ng-options="key for key in ctrl.keys"></select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="yAxisProperty">Y</label>
+      </div>
+      <div class="col-md-9">
+        <select id="yAxisProperty" ng-model="ctrl.y" ng-options="key for key in ctrl.keys"></select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="sizeAxisProperty">Size</label>
+      </div>
+      <div class="col-md-9">
+        <select id="sizeAxisProperty" ng-model="ctrl.size" ng-options="key for key in ctrl.keys"></select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="colorAxisProperty">Color</label>
+      </div>
+      <div class="col-md-9">
+        <select id="colorAxisProperty" ng-model="ctrl.color" ng-options="key for key in ctrl.keys"></select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <button class="btn btn-default" ng-click="ctrl.addData()">Add</button>
+    <button class="btn btn-default" ng-click="ctrl.removeData()">Remove</button>
+  </div>
+</div>
+
