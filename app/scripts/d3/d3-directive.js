@@ -8,11 +8,13 @@
           x: '=d3X',
           y: '=d3Y',
           color: '=d3Color',
-          size: '=d3Size'
+          size: '=d3Size',
+          duration: '='
         },
         link: function (scope, element, attrs) {
 
           var d3 = d3Service.d3;
+          var easeDuration = scope.duration | 500;
 
           var format = d3.time.format("%a %b %d %Y");
 
@@ -42,7 +44,7 @@
             .domain(d3.extent(scope.data, propGetter(scope.y))).nice();
 
           var size = d3.scale.linear()
-            .range([1, 15])
+            .range([2, 18])
             .domain(d3.extent(scope.data, propGetter(scope.size))).nice();
 
           var colours = ["#6363FF", "#6373FF", "#63A3FF", "#63E3FF", "#63FFFB", "#63FFCB",
@@ -101,7 +103,7 @@
 
             setColorAndSize(
               setPosition(
-                circles.transition()
+                circles.transition().duration(easeDuration)
               )
             );
 
@@ -110,9 +112,9 @@
                 return 0.001;
               });
 
-            setColorAndSize(newCircles.transition());
+            setColorAndSize(newCircles.transition().duration(easeDuration));
 
-            circles.exit().transition().attr("r", 0).remove();
+            circles.exit().transition().duration(easeDuration).attr("r", 0).remove();
 
             d3.svg.axis().scale(x);
           }
