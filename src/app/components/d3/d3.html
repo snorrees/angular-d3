@@ -1,0 +1,51 @@
+<div layout="column" layout-align="center center">
+  <section class="jumbotron" flex>
+    <h1>Angular + D3</h1>
+  </section>
+
+  <div layout="row" flex layout-fill layout-margin>
+
+      <div flex="66" d3-dir d3-data="ctrl.data" d3-x="ctrl.x" d3-y="ctrl.y"
+           d3-color="ctrl.color" d3-size="ctrl.size" style="height: 600px;"
+           duration="1000">
+      </div>
+
+    <div flex layout="column" layout-fill layout-margin>
+      <div layout='row' ng-repeat="item in ctrl.labels" flex>
+        <md-input-container flex>
+          <label>{{item.label}}</label>
+        </md-input-container>
+        <md-select ng-model="ctrl[item.property]" flex>
+          <md-option ng-value="key" ng-repeat="key in ctrl.keys">{{ key }}</md-option>
+        </md-select>
+      </div>
+      <div layout="row" flex>
+        <md-button flex class=" md-primary" ng-click="ctrl.addData()" aria-label="add">
+          <ng-md-icon class="md-primary" icon="add_circle_outline" size="44"></ng-md-icon>
+        </md-button>
+        <md-button flex class="md-warn" ng-click="ctrl.removeData()" aria-label="remove">
+          <ng-md-icon icon="highlight_remove" size="44"></ng-md-icon>
+        </md-button>
+      </div>
+      <div layout="row" flex>
+        <md-slider flex md-discrete
+                   ng-model="ctrl.slider.value" step="1" min="0" max="100"
+                   aria-label="cross-section">
+        </md-slider>
+        <div flex>   {{ctrl.slider.ticks[ctrl.slider.value]}}</div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <!--<div class="col-md-6">-->
+  <!--<span slider ng-model="ctrl.slider.value" ticks="ctrl.slider.ticks"-->
+  <!--ticks-snap-bounds="10000" value="ctrl.slider.value"></span>-->
+  <!--</div>-->
+
+</div>
+
+
+
